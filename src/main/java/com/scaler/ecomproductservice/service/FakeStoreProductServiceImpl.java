@@ -4,6 +4,8 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -22,17 +24,20 @@ public class FakeStoreProductServiceImpl implements ProductService{
     }
 
     @Override
-    public ProductListResponseDTO getAllProducts() {
+    public List<ProductResponseDTO> getAllProducts() {
         String getAllProductsURL = "https://fakestoreapi.com/products";
         RestTemplate restTemplate = restTemplateBuilder.build();
-        ResponseEntity<List<ProductResponseDTO>> productResponse = restTemplate.getForEntity(getAllProductsURL, new ParameterizedType<List<ProductResponseDTO>>());
+        ResponseEntity<List<ProductResponseDTO>> productResponse = restTemplate.exchange(getAllProductsURL, HttpMethod.GET, null,new ParameterizedTypeReference<List<ProductResponseDTO>>() {});
         return productResponse.getBody();
+        // return null;
     }
 
     @Override
-    public Product getProductById(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getProductById'");
+    public ProductResponseDTO getProductById(int id) {
+        String getAllProductsURL = "https://fakestoreapi.com/products/" + id;
+        RestTemplate restTemplate = restTemplateBuilder.build();
+        ResponseEntity<ProductResponseDTO> productResponse = restTemplate.getForEntity(getAllProductsURL, ProductResponseDTO.class);
+        return productResponse.getBody();
     }
 
     @Override
