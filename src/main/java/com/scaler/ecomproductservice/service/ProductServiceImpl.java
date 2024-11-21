@@ -37,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product updateProduct(int id, Product updatedProduct) {
+    public ProductResponseDTO updateProduct(int id, ProductRequestDTO updatedProduct) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateProduct'");
     }
