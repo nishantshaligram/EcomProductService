@@ -11,8 +11,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.scaler.ecomproductservice.FakeStoreAPIClient;
+import com.scaler.ecomproductservice.dto.FakeStoreProductRequestDTO;
+import com.scaler.ecomproductservice.dto.FakeStoreProductResponseDTO;
 import com.scaler.ecomproductservice.dto.ProductRequestDTO;
 import com.scaler.ecomproductservice.dto.ProductResponseDTO;
+import static com.scaler.ecomproductservice.mapper.ProductMapper.productRequestToFakeStoreProductRequest;
+import static com.scaler.ecomproductservice.mapper.ProductMapper.fakeStoreProductResponseToProductResponse;
 import com.scaler.ecomproductservice.model.Product;
 
 @Service("fakeStoreProductService")
@@ -43,11 +47,10 @@ public class FakeStoreProductServiceImpl implements ProductService{
     }
 
     @Override
-    public ProductResponseDTO createProduct(ProductRequestDTO product) {
-        String createProductURL = "https://fakestoreapi.com/products/";
-        RestTemplate restTemplate = restTemplateBuilder.build();
-        ResponseEntity<ProductResponseDTO> response = restTemplate.postForEntity( createProductURL, product, ProductResponseDTO.class);
-        return response.getBody();
+    public ProductResponseDTO createProduct(ProductRequestDTO productRequestDTO) {
+        FakeStoreProductRequestDTO fakeStoreProductRequestDTO =  productRequestToFakeStoreProductRequest(productRequestDTO);
+        FakeStoreProductResponseDTO fakeStoreProductDTO = fakeStoreAPIClient.createProduct(fakeStoreProductRequestDTO);
+        return  fakeStoreProductResponseToProductResponse(fakeStoreProductDTO);
     }
 
     @Override
