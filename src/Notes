@@ -1,5 +1,15 @@
+[Day-1] -> Call to FakeStore API using RestTemplate to get single product 
 1. Created the models
 2. Created the required DTOs
+3. Created the controllers
+4. Created the service layer
+5. Implemented RestTemplate
+6. Invoked call to 3rd party [ FakeStoreAPI ] to get data
+7. Returned response from controller
+
+[Day-2] -> CRUD APIs Exception Handling 
+1. Constructor Injection
+2. Create 5 CURD APIs - getProduct(id), getAllProducts(), createProduct(), updateProduct(), deleteProduct()
 3. Created the controllers
 4. Created the service layer
 5. Implemented RestTemplate
