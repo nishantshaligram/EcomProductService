@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.scaler.ecomproductservice.dto.ProductListResponseDTO;
+import com.scaler.ecomproductservice.dto.ProductRequestDTO;
 import com.scaler.ecomproductservice.dto.ProductResponseDTO;
 import com.scaler.ecomproductservice.model.Product;
 
@@ -24,13 +25,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product createProduct(Product product) {
+    public ProductResponseDTO createProduct(ProductRequestDTO product) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'createProduct'");
     }
 
     @Override
-    public Product deleteProduct(int id) {
+    public boolean deleteProduct(int id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteProduct'");
     }
