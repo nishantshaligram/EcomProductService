@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.scaler.ecomproductservice.dto.ProductListResponseDTO;
 import com.scaler.ecomproductservice.dto.ProductRequestDTO;
 import com.scaler.ecomproductservice.dto.ProductResponseDTO;
+import com.scaler.ecomproductservice.exception.ProductNotFoundException;
 import com.scaler.ecomproductservice.service.ProductService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 
@@ -38,7 +41,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/{id}")
-    public ResponseEntity getProductById(@PathVariable Integer id) {
+    public ResponseEntity getProductById(@PathVariable Integer id) throws ProductNotFoundException {
         ProductResponseDTO response =  productService.getProductById(1);
         return ResponseEntity.ok(response);
     }
@@ -52,6 +55,12 @@ public class ProductController {
     @DeleteMapping("/products/{id}")
     public ResponseEntity deleteProduct(@PathVariable("id") Integer id) {
         boolean response = productService.deleteProduct(id);
+        return ResponseEntity.ok(response);
+    }
+
+    @PutMapping("/products/{id}")
+    public ResponseEntity updateProduct(@PathVariable int id, @RequestBody ProductRequestDTO productRequestDTO) {
+        ProductResponseDTO response = productService.updateProduct(id, productRequestDTO);
         return ResponseEntity.ok(response);
     }
 }
