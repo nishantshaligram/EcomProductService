@@ -42,7 +42,7 @@ public class ProductController {
 
     @GetMapping("/products/{id}")
     public ResponseEntity getProductById(@PathVariable Integer id) throws ProductNotFoundException {
-        ProductResponseDTO response =  productService.getProductById(1);
+        ProductResponseDTO response =  productService.getProductById(id);
         return ResponseEntity.ok(response);
     }
 
@@ -59,7 +59,7 @@ public class ProductController {
     }
 
     @PutMapping("/products/{id}")
-    public ResponseEntity updateProduct(@PathVariable int id, @RequestBody ProductRequestDTO productRequestDTO) {
+    public ResponseEntity updateProduct(@PathVariable Integer id, @RequestBody ProductRequestDTO productRequestDTO) {
         ProductResponseDTO response = productService.updateProduct(id, productRequestDTO);
         return ResponseEntity.ok(response);
     }
