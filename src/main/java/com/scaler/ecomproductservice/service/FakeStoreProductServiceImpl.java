@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.scaler.ecomproductservice.FakeStoreAPIClient;
+import com.scaler.ecomproductservice.client.FakeStoreAPIClient;
 import com.scaler.ecomproductservice.dto.FakeStoreProductRequestDTO;
 import com.scaler.ecomproductservice.dto.FakeStoreProductResponseDTO;
 import com.scaler.ecomproductservice.dto.ProductListResponseDTO;
