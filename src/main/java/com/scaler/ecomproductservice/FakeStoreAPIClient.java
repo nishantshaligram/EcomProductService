@@ -43,9 +43,9 @@ public class FakeStoreAPIClient {
     }
 
     public List<FakeStoreProductResponseDTO> getAllProducts(){
-        String getAllProductsURL = productBaseURL;
+        String getAllProductsURL = productBaseURL + "products/";
         RestTemplate restTemplate = restTemplateBuilder.build();
-        ResponseEntity<List<FakeStoreProductResponseDTO>> response = restTemplate.exchange(getAllProductsURL, HttpMethod.GET, null,new ParameterizedTypeReference<List<FakeStoreProductResponseDTO>>() {});
+        ResponseEntity<List<FakeStoreProductResponseDTO>> response = restTemplate.exchange(getAllProductsURL, HttpMethod.GET, null, new ParameterizedTypeReference<List<FakeStoreProductResponseDTO>>() {});
         return response.getBody();
     }
     
