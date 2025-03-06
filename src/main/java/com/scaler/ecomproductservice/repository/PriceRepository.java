@@ -1,11 +1,13 @@
 package com.scaler.ecomproductservice.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-import com.scaler.ecomproductservice.model.Product;
 import java.util.UUID;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.scaler.ecomproductservice.model.Price;
+
 @Repository
-public interface ProductRepository extends JpaRepository<Product, UUID>{
-    
+public interface PriceRepository extends JpaRepository<Price, UUID> {
+
 }
